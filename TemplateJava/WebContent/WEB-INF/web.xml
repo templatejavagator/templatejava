@@ -37,6 +37,12 @@
 		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<!-- UI Debug start --> 
+	<context-param>
+	    <param-name>javax.faces.PROJECT_STAGE</param-name>
+	    <param-value>Development</param-value>
+	</context-param>
+	<!-- UI Debug end -->
   <listener>
     <listener-class>
 		org.springframework.web.context.ContextLoaderListener
