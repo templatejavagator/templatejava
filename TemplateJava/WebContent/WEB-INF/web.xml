@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>TemplateJava</display-name>
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+  </context-param>
+  <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-servlet.xml</param-value>
+	</context-param>
+  <context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>bootstrap</param-value>
+  </context-param>
+  <context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
+  <!-- Fix bug: SEVERE: Servlet.service() for servlet [Faces Servlet] in context 
+		with path [/theproudofus001] threw exception [viewId:/index.xhtml - View 
+		/index.xhtml could not be restored.] with root cause -->
+	<context-param>
+		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+		<param-value>true</param-value>
+	</context-param>
+  <listener>
+    <listener-class>
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+  </listener>
+</web-app>
